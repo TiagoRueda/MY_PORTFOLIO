@@ -1,9 +1,5 @@
-import { loadPhoneModel } from './phone.js';
-import { loadMCRModel } from './mcr.js';
-
-function projetos(section) {
-  section.innerHTML = `
-    <header>
+function conhecimentos(section) {
+  section.innerHTML = `<header>
       <h2>Projetos</h2>
     </header>
     <div class="content">
@@ -18,6 +14,7 @@ function projetos(section) {
             </div>
           </div>
           <p>Flutter - Dart - Banco de dados</p>
+          <script src="phone.js"></script> <!-- Carrega phone.js -->
         </div>
 
         <div class="card">
@@ -30,12 +27,11 @@ function projetos(section) {
             </div>
           </div>
           <p>RS485 - Ethernet - WiFi</p>
+          <script src="mcr.js"></script> <!-- Carrega mcr.js -->
         </div>
+        
       </div>
     </div>`;
-
-  loadPhoneModel("phone-container");
-  loadMCRModel("mcr-container");
 }
 
-export { projetos };
+export { conhecimentos };

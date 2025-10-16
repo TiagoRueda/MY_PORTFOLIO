@@ -5,7 +5,7 @@
     padding: 0;
     box-sizing: border-box;
 
-    font-family: "DM Sans", sans-serif;
+    font-family: "Montserrat", sans-serif;
 }
 
 :root {
@@ -238,6 +238,15 @@ body nav#navigation .social-links li:nth-child(4) svg:hover path:nth-child(2) {
     stroke: var(--paragraph-2);
 }
 
+#phone-container,
+#mcr-container {
+    width: 80vh;
+    height: 20vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 /*===== NAVIGATION ===================================*/
 
 nav {
@@ -270,7 +279,7 @@ body.light-mode nav.scroll {
 /* LOGO */
 
 a.logo {
-    font-family: "Gemunu Libre", sans-serif;
+    font-family: "Montserrat", sans-serif;
     font-size: 3rem;
     opacity: 0.7;
 }
@@ -541,6 +550,8 @@ body.light-mode #home img#notebook-2-white {
 #home img#notebook-2 {
     position: absolute;
     z-index: 90;
+    left: 130px;
+    top: -60px;
     animation: appear 1s 2s backwards;
 }
 
