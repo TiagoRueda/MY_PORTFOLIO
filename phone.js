@@ -1,17 +1,15 @@
 export function loadPhoneModel(containerId) {
+  const container = document.getElementById(containerId);
+  container.style.width = '100%';
+  container.style.height = '20rem';
+
   const scene = new THREE.Scene();
 
-  // Cálculo de proporção inicial
-  const container = document.getElementById(containerId);
-  const aspectRatio = container.offsetWidth / container.offsetHeight;
-
-  const camera = new THREE.PerspectiveCamera(50, aspectRatio, 0.1, 1500);
-  camera.position.set(0, 0, 0);
-  camera.lookAt(0, 0, 0);
-
-  const renderer = new THREE.WebGLRenderer({ antialias: true });
+  const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
   renderer.setSize(container.offsetWidth, container.offsetHeight);
   container.appendChild(renderer.domElement);
+
+  const camera = new THREE.PerspectiveCamera(50, container.offsetWidth / container.offsetHeight, 0.1, 1000);
 
   const light = new THREE.AmbientLight(0xffffff, 1);
   scene.add(light);
@@ -22,9 +20,10 @@ export function loadPhoneModel(containerId) {
 
   let phoneModel = null;
   const loader = new THREE.GLTFLoader();
+
   loader.load(
     'assets/glbs/iphone_12_pro.glb',
-    function (gltf) {
+    (gltf) => {
       phoneModel = gltf.scene;
       scene.add(phoneModel);
 
@@ -42,22 +41,26 @@ export function loadPhoneModel(containerId) {
         }
       });
 
-      phoneModel.position.set(0, 0, -200); // Centraliza o modelo
       const box = new THREE.Box3().setFromObject(phoneModel);
       const size = new THREE.Vector3();
       box.getSize(size);
-      const maxAxis = Math.max(size.x, size.y, size.z);
-      const scale = Math.min(container.offsetWidth, container.offsetHeight) / maxAxis;
-      phoneModel.scale.setScalar(scale); // Ajusta a escala para o tamanho do container
+      const maxDim = Math.max(size.x, size.y, size.z);
 
-      camera.position.set(0, 0, 150 * scale); // Ajusta a posição da câmera de acordo com a escala do modelo
-      camera.updateProjectionMatrix();
+      const scale = 3 / maxDim;
+      phoneModel.scale.setScalar(scale);
+
+      const boxScaled = new THREE.Box3().setFromObject(phoneModel);
+      const center = new THREE.Vector3();
+      boxScaled.getCenter(center);
+      phoneModel.position.sub(center);
+
+      const cameraDistance = boxScaled.getSize(new THREE.Vector3()).length() * 1.2;
+      camera.position.set(0, 0, cameraDistance);
       camera.lookAt(0, 0, 0);
+      camera.updateProjectionMatrix();
     },
     undefined,
-    function (error) {
-      console.error('Erro ao carregar o modelo:', error);
-    }
+    (error) => console.error('Erro ao carregar o modelo:', error)
   );
 
   let mouseX = 0;
@@ -69,19 +72,19 @@ export function loadPhoneModel(containerId) {
 
   function animate() {
     requestAnimationFrame(animate);
-
     if (phoneModel) {
       phoneModel.rotation.x = mouseY * 0.4;
       phoneModel.rotation.y = mouseX * 0.4;
     }
-
     renderer.render(scene, camera);
   }
   animate();
 
   window.addEventListener('resize', () => {
-    renderer.setSize(container.offsetWidth, container.offsetHeight);
-    camera.aspect = container.offsetWidth / container.offsetHeight;
+    const width = container.offsetWidth;
+    const height = container.offsetHeight;
+    renderer.setSize(width, height);
+    camera.aspect = width / height;
     camera.updateProjectionMatrix();
   });
 }

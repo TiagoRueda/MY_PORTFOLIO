@@ -162,6 +162,14 @@ body.light-mode .button:hover {
     filter: none;
 }
 
+.conhecimentos-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2rem;
+  padding: 2rem 0;
+}
+
 /* SOCIAL LINKS */
 
 .social-links {
@@ -238,13 +246,11 @@ body nav#navigation .social-links li:nth-child(4) svg:hover path:nth-child(2) {
     stroke: var(--paragraph-2);
 }
 
+#lora-container,
 #phone-container,
 #mcr-container {
-    width: 80vh;
-    height: 20vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  width: 100%;
+  height: 100%;
 }
 
 /*===== NAVIGATION ===================================*/
@@ -550,8 +556,7 @@ body.light-mode #home img#notebook-2-white {
 #home img#notebook-2 {
     position: absolute;
     z-index: 90;
-    left: 130px;
-    top: -60px;
+    top: 220px;
     animation: appear 1s 2s backwards;
 }
 
@@ -668,12 +673,15 @@ body.light-mode #home img#notebook-2-white {
 }
 
 #projects .cards {
-    display: grid;
-    grid-template-columns: repeat(1, 1fr);
-    gap: 3.2rem;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center; /* centraliza os cards */
+    gap: 3.2rem;               /* espaçamento entre cards */
 }
-
 #projects .card {
+    max-width: 350px; /* ou 400px, dependendo do design */
+    width: 100%;       /* ocupa 100% do espaço disponível até o max-width */
+    
     padding: 4rem;
     background: var(--bg-color);
 
@@ -694,7 +702,10 @@ body.light-mode #home img#notebook-2-white {
 
 #projects .card .img-wrapper {
     width: 100%;
+    height: 20rem;
     position: relative;
+    border-radius: 0.6rem;
+    overflow: hidden;
 }
 
 #projects .card img {

@@ -1,15 +1,14 @@
 export function loadMCRModel(containerId) {
   const container = document.getElementById(containerId);
-
-  // Calcular a proporção com base no container
-  const aspectRatio = container.offsetWidth / container.offsetHeight;
+  container.style.width = '100%';
+  container.style.height = '20rem';
 
   const scene = new THREE.Scene();
-  const camera = new THREE.PerspectiveCamera(75, aspectRatio, 0.1, 1000);
-  camera.position.set(200, 100, 300);
+  const camera = new THREE.PerspectiveCamera(45, container.offsetWidth / container.offsetHeight, 0.1, 1500);
+  camera.position.set(0, 0, 5);
   camera.lookAt(0, 0, 0);
 
-  const renderer = new THREE.WebGLRenderer({ antialias: true });
+  const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
   renderer.setSize(container.offsetWidth, container.offsetHeight);
   container.appendChild(renderer.domElement);
 
@@ -28,35 +27,28 @@ export function loadMCRModel(containerId) {
       mcrModel.traverse((child) => {
         if (child.isMesh) {
           child.material = new THREE.MeshStandardMaterial({
-            color: 0xf9d995,
+            color: 0xD1ADA3,
             metalness: 0.5,
             roughness: 0.5
           });
         }
       });
 
-      // Verifique o tamanho do modelo para ajustar a escala
       const box = new THREE.Box3().setFromObject(mcrModel);
       const size = new THREE.Vector3();
       box.getSize(size);
-      console.log('Tamanho do modelo MCR:', size); // Adicionando log para verificação do tamanho
 
       const maxAxis = Math.max(size.x, size.y, size.z);
-      const scale = Math.min(container.offsetWidth, container.offsetHeight) / maxAxis; // Ajusta a escala com base no container
+      const scale = 4 / maxAxis;
       mcrModel.scale.setScalar(scale);
 
-      // Verifique o modelo após a escala
-      console.log('Escala aplicada no modelo MCR:', scale);
-
-      // Centraliza o modelo
       const center = new THREE.Vector3();
       box.getCenter(center);
       mcrModel.position.sub(center);
 
-      // Ajuste dinâmico da posição da câmera
-      camera.position.set(200 * scale, 100 * scale, 300 * scale);
-      camera.updateProjectionMatrix();
+      camera.position.set(0, 0, 5);
       camera.lookAt(0, 0, 0);
+      camera.updateProjectionMatrix();
     },
     undefined,
     function (error) {
@@ -74,20 +66,19 @@ export function loadMCRModel(containerId) {
 
   function animate() {
     requestAnimationFrame(animate);
-
     if (mcrModel) {
       mcrModel.rotation.x = mouseY * 0.6;
       mcrModel.rotation.y = mouseX * 0.6;
     }
-
     renderer.render(scene, camera);
   }
   animate();
 
   window.addEventListener('resize', () => {
-    // Atualiza o tamanho do renderer e a proporção da câmera
-    renderer.setSize(container.offsetWidth, container.offsetHeight);
-    camera.aspect = container.offsetWidth / container.offsetHeight;
+    const width = container.offsetWidth;
+    const height = container.offsetHeight;
+    renderer.setSize(width, height);
+    camera.aspect = width / height;
     camera.updateProjectionMatrix();
   });
 }

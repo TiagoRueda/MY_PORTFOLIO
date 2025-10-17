@@ -8,24 +8,22 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="description" content="Portifólio de Tiago Rueda, desenvolvedor web Front-end" />
+    <meta name="description" content="Portifólio de Tiago Rueda" />
     <meta name="author" content="Tiago Rueda" />
-    <meta property="og:description" content="Portifólio de Tiago Rueda, desenvolvedor web Front-end" />
-    <!--<meta property="og:image" content="./assets/images/tiago.png" />-->
+    <meta property="og:description" content="Portifólio de Tiago Rueda" />
+    <meta property="og:image" content="./assets/images/tiago.jpg" />
     <meta property="og:type" content="website" />
-    <meta name="keywords"
-        content="developer, programação, dev, desenvolvedor, programador, html, css, javascript, nodejs, reactjs, react, github, frontend, front-end" />
+    <meta name="keywords" content="developer, programação, dev, desenvolvedor" />
     <meta name="robots" content="index" />
 
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200&display=swap" rel="stylesheet" />
-
 
     <link rel="shortcut icon" href="./icons/favicon.png" type="image/x-icon" />
     <link rel="stylesheet" href="./styles.css" />
     <script src="https://unpkg.com/scrollreveal"></script>
     <script src="https://unpkg.com/three@0.128.0/build/three.min.js"></script>
     <script src="https://unpkg.com/three@0.128.0/examples/js/loaders/GLTFLoader.js"></script>
-    <script type="module" href="./main.js"></script>
+
     <script type="module">
         import { projetos } from './projetos.js';
         const section_projetos = document.getElementById('projects');
@@ -33,10 +31,10 @@
     </script>
     <script type="module">
         import { conhecimentos } from './conhecimentos.js';
-        const section_conhecimentos = document.getElementById('conhecimentos');
+        const section_conhecimentos = document.getElementById('knowledge');
         if (section_conhecimentos) conhecimentos(section_conhecimentos);
     </script>
-
+    <script type="module" src="./main.js"></script>
     <title>Tiago Rueda</title>
 </head>
 
@@ -122,10 +120,9 @@
     <section id="home">
         <div class="wrapper">
             <div class="col-a">
-                <!---    <header>
-                    <h4>Hello world 👋🏾</h4>
-                    <h1>Eu sou Lucyan,</h1>
-                </header>-->
+                <header>
+                    <h4>Bem-vindo!</h4>
+                </header>
                 <div class="content">
                     <p class="line typing">Desenvolvedor de Software e Sistemas Embarcados.</p>
                     <a class="button" href="#contact"> Contato </a>
@@ -133,13 +130,6 @@
             </div>
 
             <div class="col-b">
-                <!---    <img src="images/notebook.png" alt="Imagem de um notebook." id="notebook-1" />
-                <img src="images/notebook-2.png" alt="Imagem de um notebook com tela quebrada" id="notebook-2" />
-                <img src="images/notebook-2-white.png" alt="Imagem de um notebook com tela quebrada"
-                    id="notebook-2-white" />
-                <img src="./images/vidro.png"
-                    alt="Imagem de estilhaços de vidro com os ícones de HTML5, CSS3 e JavaScript por cima."
-                    id="vidro" />-->
                 <img src="./assets/images/dev.png" alt="Imagem dev." id="notebook-1" />
                 <img src="./assets/images/sysemb.png" alt="Imagem sistemas embarcados." id="notebook-2" />
             </div>
@@ -154,19 +144,24 @@
                 </header>
                 <div class="content">
                     <p>
-                        Me chamo Tiago Rueda, graduando no curso de Sistemas de
-                        Informação pela UFRRJ e desenvolvedor web Front-end. Desenvolvo páginas e sistemas web
-                        responsívos e de layout atrativo. Tenho uma trajetória de cerca de 4 anos
-                        trabalhando com suporte técnico e manutenção de computadores, o
-                        que me tornou um profissional dedicado e organizado. Hoje na área de desenvolvimento vivo o
-                        aprendizado continuo, focando em tecnologias JavaScript. Busco oportunidades no mercado como dev
-                        e, em um futuro próximo, viso me tornar um desenvolvedor Full Stack.
+                      Possuo experiência na integração entre hardware e software, 
+                      atuando em projetos de automação, IoT e sistemas embarcados. 
+                      Domínio em linguagens como C, C#, Python e JavaScript, além de 
+                      conhecimento em microcontroladores, protocolos industriais e 
+                      desenvolvimento de layouts PCB.
+                    </p>
+
+                    <p>
+                      Formado em <strong>Tecnologia em Automação Industrial</strong> pela 
+                      <em>Fatec Itaquera</em> e pós-graduado em 
+                      <strong>Engenharia de Software com Métodos Ágeis</strong> pela 
+                      <em>Universidade Cruzeiro do Sul</em>.
                     </p>
                 </div>
             </div>
 
             <div class="col-b">
-                <!--<img src="./assets/images/tiago.png" alt="Eu" />-->
+                <img src="./assets/images/tiago.jpg" alt="Eu" />
             </div>
         </div>
     </section>
@@ -176,7 +171,7 @@
         </div>
     </section>
 
-    <section id="conhecimentos">
+    <section id="knowledge">
         <div class="wrapper"></div>
     </section>
 
