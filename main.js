@@ -14,7 +14,7 @@ const vidro = document.querySelector("#vidro");
 // Seções
 const about = document.querySelector("#about");
 const projects = document.querySelector("#projects");
-const knowledge = document.querySelector("#conhecimentos");
+const knowledge = document.querySelector("#knowledge");
 const contact = document.querySelector("#contact");
 
 // Wrappers

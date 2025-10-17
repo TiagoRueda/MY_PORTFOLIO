@@ -3,14 +3,16 @@ function conhecimentos(section) {
     <style>
       /* ===== Seletor específico para não interferir no style principal ===== */
       #${section.id} .cards {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        display: flex;
+        flex-wrap: wrap;
         gap: 20px;
+        justify-content: center;
       }
 
       #${section.id} .card {
         background: transparent; /* mantém fundo escuro do site */
         border-radius: 12px;
+        flex: 1 1 250px;
         padding: 20px;
         box-shadow: 0 2px 6px rgba(0,0,0,0.08);
         display: flex;
@@ -29,17 +31,17 @@ function conhecimentos(section) {
       #${section.id} .card h3 {
         margin-bottom: 10px;
         font-size: 1.3em;
-        color: #fff; /* branco */
+        color: var(--headline);
       }
 
       #${section.id} .card p {
         margin-bottom: 15px;
-        color: #ddd; /* cinza claro */
+        color: var(--paragraph);
       }
 
       #${section.id} .tech span {
         font-size: 0.9em;
-        color: #fff; /* branco */
+        color: var(--paragraph);
       }
 
       #${section.id} .img-wrapper {
@@ -57,8 +59,8 @@ function conhecimentos(section) {
       }
 
       #${section.id} .tech img {
-        width: 60px;
-        height: 60px;
+        width: 50px;
+        height: 50px;
         object-fit: contain;
         margin-bottom: 5px;
         transition: transform 0.2s;
@@ -69,13 +71,13 @@ function conhecimentos(section) {
       }
 
       /* ===== Responsividade ===== */
-      @media (max-width: 600px) {
+      @media (max-width: 800px) {
         #${section.id} .tech img {
           width: 50px;
           height: 50px;
         }
         #${section.id} .card {
-          padding: 15px;
+          padding: 50px;
         }
       }
     </style>

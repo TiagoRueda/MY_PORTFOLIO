@@ -1,7 +1,7 @@
 export function loadAEModel(containerId) {
   const container = document.getElementById(containerId);
   container.style.width = '100%';
-  container.style.height = '20rem';
+  container.style.height = '25rem';
 
   const scene = new THREE.Scene();
   const camera = new THREE.PerspectiveCamera(45, container.offsetWidth / container.offsetHeight, 0.1, 1500);
@@ -19,7 +19,7 @@ export function loadAEModel(containerId) {
   const loader = new THREE.GLTFLoader();
 
   loader.load(
-    'assets/glbs/lora.glb',
+    'assets/glbs/ae21.glb',
     function (gltf) {
       loraModel = gltf.scene;
       scene.add(loraModel);
@@ -39,7 +39,7 @@ export function loadAEModel(containerId) {
       box.getSize(size);
 
       const maxAxis = Math.max(size.x, size.y, size.z);
-      const scale = 2 / maxAxis;
+      const scale = 4 / maxAxis;
       loraModel.scale.setScalar(scale);
 
       const center = new THREE.Vector3();
