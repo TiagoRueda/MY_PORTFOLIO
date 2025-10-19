@@ -1,7 +1,7 @@
-export function loadAEModel(containerId) {
+export function loadMCRModel(containerId) {
   const container = document.getElementById(containerId);
   container.style.width = '100%';
-  container.style.height = '25rem';
+  container.style.height = '20rem';
 
   const scene = new THREE.Scene();
   const camera = new THREE.PerspectiveCamera(45, container.offsetWidth / container.offsetHeight, 0.1, 1500);
@@ -15,36 +15,36 @@ export function loadAEModel(containerId) {
   const light = new THREE.AmbientLight(0xffffff, 1);
   scene.add(light);
 
-  let loraModel = null;
+  let mcrModel = null;
   const loader = new THREE.GLTFLoader();
 
   loader.load(
-    'assets/glbs/ae21.glb',
+    'public/assets/glbs/mcr.glb',
     function (gltf) {
-      loraModel = gltf.scene;
-      scene.add(loraModel);
+      mcrModel = gltf.scene;
+      scene.add(mcrModel);
 
-      loraModel.traverse((child) => {
+      mcrModel.traverse((child) => {
         if (child.isMesh) {
           child.material = new THREE.MeshStandardMaterial({
-            color: 0x9E9D9D,
+            color: 0xD1ADA3,
             metalness: 0.5,
             roughness: 0.5
           });
         }
       });
 
-      const box = new THREE.Box3().setFromObject(loraModel);
+      const box = new THREE.Box3().setFromObject(mcrModel);
       const size = new THREE.Vector3();
       box.getSize(size);
 
       const maxAxis = Math.max(size.x, size.y, size.z);
       const scale = 4 / maxAxis;
-      loraModel.scale.setScalar(scale);
+      mcrModel.scale.setScalar(scale);
 
       const center = new THREE.Vector3();
       box.getCenter(center);
-      loraModel.position.sub(center);
+      mcrModel.position.sub(center);
 
       camera.position.set(0, 0, 5);
       camera.lookAt(0, 0, 0);
@@ -52,7 +52,7 @@ export function loadAEModel(containerId) {
     },
     undefined,
     function (error) {
-      console.error('Erro ao carregar o modelo lora:', error);
+      console.error('Erro ao carregar o modelo MCR:', error);
     }
   );
 
@@ -66,9 +66,9 @@ export function loadAEModel(containerId) {
 
   function animate() {
     requestAnimationFrame(animate);
-    if (loraModel) {
-      loraModel.rotation.x = mouseY * 0.6;
-      loraModel.rotation.y = mouseX * 0.6;
+    if (mcrModel) {
+      mcrModel.rotation.x = mouseY * 0.6;
+      mcrModel.rotation.y = mouseX * 0.6;
     }
     renderer.render(scene, camera);
   }

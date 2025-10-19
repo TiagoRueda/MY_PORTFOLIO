@@ -1,33 +1,27 @@
-import { conhecimentos } from "./conhecimentos.js";
-import { projetos } from "./projetos.js";
+import { conhecimentos } from "/public/conhecimentos.js";
+import { projetos } from "/public//projetos.js";
 
-// ---------------- Elementos ----------------
 const navigation = document.querySelector("#navigation");
 const backToTopButton = document.querySelector("#backToTopButton");
 const toggle = document.querySelector("#sw-checkbox");
 
-const notebook_1 = document.querySelector("#notebook-1");
-const notebook_2 = document.querySelector("#notebook-2");
-const notebook_2_white = document.querySelector("#notebook-2-white");
+const img_1 = document.querySelector("#img-col-1");
+const img_2 = document.querySelector("#img-col-2");
+const img_2_white = document.querySelector("#img-col-2-white");
 const vidro = document.querySelector("#vidro");
 
-// Seções
 const about = document.querySelector("#about");
 const projects = document.querySelector("#projects");
 const knowledge = document.querySelector("#knowledge");
 const contact = document.querySelector("#contact");
 
-// Wrappers
 const projectsWrapper = projects ? projects.querySelector(".wrapper") : null;
 const knowledgeWrapper = knowledge ? knowledge.querySelector(".wrapper") : null;
 
-// ---------------- On Load ----------------
 window.addEventListener("load", () => {
-  // Carregar projetos e conhecimentos
   if (projectsWrapper) projetos(projectsWrapper);
   if (knowledgeWrapper) conhecimentos(knowledgeWrapper);
 
-  // Menu abrir/fechar
   document.querySelectorAll(".open").forEach(btn =>
     btn.addEventListener("click", () => document.body.classList.add("menu-expanded"))
   );
@@ -35,19 +29,16 @@ window.addEventListener("load", () => {
     btn.addEventListener("click", () => document.body.classList.remove("menu-expanded"))
   );
 
-  // Fechar menu ao clicar em qualquer link
   document.querySelectorAll(".menu a").forEach(link =>
     link.addEventListener("click", () => document.body.classList.remove("menu-expanded"))
   );
 
-  // Light mode
   if (toggle) {
     toggle.addEventListener("change", () => {
       document.body.classList.toggle("light-mode");
     });
   }
 
-  // Botão "Desafio"
   const desafioBtn = document.querySelector("#desafio");
   if (desafioBtn) {
     desafioBtn.addEventListener("click", () => {
@@ -62,17 +53,15 @@ window.addEventListener("load", () => {
     });
   }
 
-  // Animações iniciais
   setTimeout(() => {
-    if (notebook_1) notebook_1.style.opacity = 0;
-    if (notebook_1) notebook_1.style.animation = "none";
-    if (notebook_2) notebook_2.style.animation = "none";
-    if (notebook_2_white) notebook_2_white.style.animation = "none";
+    if (img_1) img_1.style.opacity = 0;
+    if (img_1) img_1.style.animation = "none";
+    if (img_2) img_2.style.animation = "none";
+    if (img_2_white) img_2_white.style.animation = "none";
     if (vidro) vidro.style.animation = "none";
   }, 4000);
 });
 
-// ---------------- Scroll ----------------
 window.addEventListener("scroll", onScroll);
 onScroll();
 
@@ -115,7 +104,6 @@ function showBackToTopButtonOnScroll() {
   else backToTopButton.classList.remove("show");
 }
 
-// ---------------- ScrollReveal ----------------
 ScrollReveal({
   origin: "bottom",
   distance: "50px",

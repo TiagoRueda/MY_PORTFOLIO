@@ -24,25 +24,24 @@
     <script src="https://unpkg.com/three@0.128.0/build/three.min.js"></script>
     <script src="https://unpkg.com/three@0.128.0/examples/js/loaders/GLTFLoader.js"></script>
 
-
     <script type="module">
-        import { projetos } from './projetos.js';
+        import { projetos } from '/public/projetos.js';
         const section_projetos = document.getElementById('projects');
         if (section_projetos) projetos(section_projetos);
     </script>
     <script type="module">
-        import { conhecimentos } from './conhecimentos.js';
+        import { conhecimentos } from '/public/conhecimentos.js';
         const section_conhecimentos = document.getElementById('knowledge');
         if (section_conhecimentos) conhecimentos(section_conhecimentos);
     </script>
-    <script type="module" src="./main.js"></script>
+    <script type="module" src="/main.js"></script>
     <title>Tiago Rueda</title>
 </head>
 
 <body>
     <nav id="navigation">
         <div class="wrapper">
-            <a class="logo close" href="#home"> Tiago Rueda </a>
+            <a class="logo close" href="#home"> Portifólio </a>
 
             <div class="menu">
                 <ul>
@@ -125,14 +124,13 @@
                     <h4>Bem-vindo!</h4>
                 </header>
                 <div class="content">
-                    <p class="line typing">Desenvolvedor de Software e Sistemas Embarcados.</p>
+                    <p class="line typing">Me chamo Tiago Rueda</p>
                     <a class="button" href="#contact"> Contato </a>
                 </div>
             </div>
 
             <div class="col-b">
-                <img src="./assets/images/dev.png" alt="Imagem dev." id="notebook-1" />
-                <img src="./assets/images/sysemb.png" alt="Imagem sistemas embarcados." id="notebook-2" />
+                <img src="/public/assets/images/dev.png" alt="Imagem dev." id="img-col-2" />
             </div>
         </div>
     </section>
@@ -162,7 +160,7 @@
             </div>
 
             <div class="col-b">
-                <img src="./assets/images/tiago.jpg" alt="Eu" />
+                <img src="/public/assets/images/tiago.jpg" alt="Eu" />
             </div>
         </div>
     </section>
@@ -203,7 +201,7 @@
                 </div>
             </div>
             <div class="col-b">
-                <img src="./assets/images/contact.png" alt="Contato" />
+                <img src="/public/assets/images/contact.png" alt="Contato" />
             </div>
     </section>
 
