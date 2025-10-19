@@ -1,7 +1,6 @@
 function conhecimentos(section) {
   section.innerHTML = `
     <style>
-      /* ===== Seletor específico para não interferir no style principal ===== */
       #${section.id} .cards {
         display: flex;
         flex-wrap: wrap;

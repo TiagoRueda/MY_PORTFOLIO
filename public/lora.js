@@ -19,7 +19,7 @@ export function loadAEModel(containerId) {
   const loader = new THREE.GLTFLoader();
 
   loader.load(
-    'public/assets/glbs/ae21.glb',
+    '/assets/glbs/ae21.glb',
     function (gltf) {
       loraModel = gltf.scene;
       scene.add(loraModel);

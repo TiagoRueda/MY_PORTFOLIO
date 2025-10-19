@@ -19,7 +19,7 @@ export function loadMCRModel(containerId) {
   const loader = new THREE.GLTFLoader();
 
   loader.load(
-    'public/assets/glbs/mcr.glb',
+    '/assets/glbs/mcr.glb',
     function (gltf) {
       mcrModel = gltf.scene;
       scene.add(mcrModel);

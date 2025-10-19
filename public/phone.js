@@ -15,14 +15,14 @@ export function loadPhoneModel(containerId) {
   scene.add(light);
 
   const textureLoader = new THREE.TextureLoader();
-  const texture = textureLoader.load('public/assets/images/app.png');
+  const texture = textureLoader.load('/assets/images/app.png');
   const iphoneBlue = new THREE.Color(0x1d4f8f);
 
   let phoneModel = null;
   const loader = new THREE.GLTFLoader();
 
   loader.load(
-    'public/assets/glbs/iphone_12_pro.glb',
+    '/assets/glbs/iphone_12_pro.glb',
     (gltf) => {
       phoneModel = gltf.scene;
       scene.add(phoneModel);

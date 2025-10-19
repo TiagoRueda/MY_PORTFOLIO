@@ -1,6 +1,6 @@
-import { loadPhoneModel } from './phone.js';
-import { loadMCRModel } from './mcr.js';
-import { loadAEModel } from './lora.js';
+import { loadPhoneModel } from '/phone.js';
+import { loadMCRModel } from '/mcr.js';
+import { loadAEModel } from '/lora.js';
 
 function projetos(section) {
   section.innerHTML = `
